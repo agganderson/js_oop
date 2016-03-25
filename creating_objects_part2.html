@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset='utf-8'>
+	<title>Javascript OOP Creating Objects Part 2</title>
+
+	<script>
+
+	function vehicleConstructor(name, wheels, passengers, speed){
+		var that = this;
+
+		this.name = name;
+		this.wheels = wheels;
+		this.passengers = passengers;
+		this.speed = speed;
+
+		var distance_travelled = 0;
+		var updateDistanceTravelled = function(){
+			distance_travelled += that.speed;
+		};
+
+		this.makeNoise = function(){
+			console.log("noise");
+			return this;
+		};
+
+		this.checkMiles = function(){
+			console.log(distance_travelled);
+			return this;
+		};
+
+		this.move = function(){
+			updateDistanceTravelled();
+			makeNoise();
+			return this;
+		};
+
+	}
+
+	var Bike = new vehicleConstructor("Bike", 2, 1, 10);
+	console.log(Bike.passengers);
+	Bike.makeNoise = function(){
+		console.log('Ring Ring!');
+	};
+	Bike.makeNoise();
+
+	var Sedan = new vehicleConstructor("Sedan", 4, 5, 40);
+	console.log(Sedan.name, Sedan.wheels, Sedan.passengers, Sedan.speed);
+	Sedan.makeNoise = function(){
+		console.log("Honk Honk");
+	};
+	Sedan.makeNoise();
+	Sedan.pickUpPassengers = function(x){
+		Sedan.passengers += x;
+		console.log(Sedan.passengers);
+	};
+	Sedan.pickUpPassengers(2);
+	Sedan.move().move().miles();
+
+	</script>
+
+</head>
+<body>
+	<h1>SUCH FUN</h1>
+</body>
+</html>

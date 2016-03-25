@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset='utf-8'>
+	<title>Javascript OOP Creating Objects Part 1</title>
+
+	<script>
+
+	function vehicleConstructor(name, wheels, passengers){
+		var vehicle = {};
+		vehicle.name = name;
+		vehicle.wheels = wheels;
+		vehicle.passengers = passengers;
+		vehicle.makeNoise = function(){
+			console.log("noise");
+		};
+		return vehicle;
+	}
+
+	var Bike = vehicleConstructor("Bike", 2, 1);
+	Bike.makeNoise = function(){
+		console.log("ring! ring!");
+	};
+	Bike.makeNoise();
+
+	var Sedan = vehicleConstructor("Sedan", 5, 4);
+	Sedan.makeNoise = function(){
+		console.log("HONK HONK");
+	};
+	Sedan.makeNoise();
+
+	var Bus = vehicleConstructor("Bus", 4, 8);
+// 	console.log(Bus.passengers);
+// 	Bus.passengers += 5;
+// 	console.log(Bus.passengers);
+	Bus.pickUpPassengers = function(x){
+		Bus.passengers += x;
+		console.log(Bus.passengers);
+	};
+	
+	Bus.pickUpPassengers(5);
+
+	</script>
+	
+</head>
+<body>
+	<h1>SUCH FUN</h1>
+</body>
+</html>

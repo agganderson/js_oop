@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset='utf-8'>
+	<title>Javascript OOP Creating Objects Part 3</title>
+
+	<script>
+
+	function vehicleConstructor(name, wheels, passengers, speed){
+		this.name = name;
+		this.wheels = wheels;
+		this.passengers = passengers;
+		this.speed = speed;
+		this.distance_traveled = 0;
+		this.updateDistanceTraveled = function(){
+			this.distance_traveled += this.speed;
+			return this.distance_traveled;
+		};
+	}
+
+	vehicleConstructor.prototype.makeNoise = function(){
+		console.log('noise');
+	};
+
+	vehicleConstructor.prototype.move = function(){
+		this.updateDistanceTraveled();
+		this.makeNoise();
+	};
+
+	vehicleConstructor.prototype.checkMiles = function(){
+		console.log(this.distance_traveled);
+	};
+
+	vehicleConstructor.prototype.vin = function(){
+		this.vehichleVin =  Math.floor((Math.random() * 100) + 1);
+		return this.vehichleVin;
+	};
+	
+	bike = new vehicleConstructor('Bike', 2, 1, 15);
+	bike.makeNoise = function(){
+        console.log('ring ring');
+    };
+
+    bike.makeNoise();
+    bike.move();
+    console.log(bike.name, bike.wheels, bike.passengers, bike.speed);
+
+
+    sedan = new vehicleConstructor('Sedan', 4, 5, 50);
+    sedan.makeNoise = function(){
+    	console.log('honk honk');
+    };
+    sedan.makeNoise();
+    sedan.move();
+    sedan.vin();
+    console.log(sedan.name, sedan.wheels, sedan.passengers, sedan.speed, sedan.distance_traveled, sedan.vehichleVin);
+    
+    bus = new vehicleConstructor('Bus', 4, 10, 40);
+    bus.pickUpPassengers = function(num){
+    	this.passengers += num;
+    	console.log(bus.passengers);
+    };
+    bus.pickUpPassengers(8);
+    bus.move();
+    bus.move();
+    bus.vin();
+    console.log(bus.name, bus.wheels, bus.passengers, bus.speed, bus.passengers, bus.distance_traveled, bus.vehichleVin);
+	</script>
+	
+</head>
+<body>
+	<h1>SUCH FUN</h1>
+</body>
+</html>
